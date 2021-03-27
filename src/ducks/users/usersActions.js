@@ -3,7 +3,6 @@ import { USERS_SUCCESS, USERS_FAILURE, USERS_REQUEST } from "./types";
 
 const login = (credentials) => async (dispatch) => {
   try {
-    console.log("halko");
     const res = await axios.post(`http://localhost:5000/users/logging`, {
       ...credentials,
     });

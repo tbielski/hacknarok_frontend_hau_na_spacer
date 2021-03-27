@@ -6,8 +6,9 @@ import { combineReducers } from "redux";
 import { createMiddleware } from "redux-api-middleware";
 
 import user from "./users/usersReducer";
+import posts from "./posts/postsReducer";
 
-const rootReducer = combineReducers({ user });
+const rootReducer = combineReducers({ user, posts });
 
 const initalState = {};
 

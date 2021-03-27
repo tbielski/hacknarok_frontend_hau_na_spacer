@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Post from "./Post";
+
+import { getAllPosts } from "../../ducks/posts/postsActions";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PostsManager() {
+function PostsManager({ getAllPosts }) {
+  React.useEffect(() => {
+    getAllPosts();
+  }, []);
+
   const classes = useStyles();
   const [city, setCity] = React.useState("");
   const [price, setPrice] = React.useState([10, 50]);
@@ -34,15 +41,16 @@ export default function PostsManager() {
     adressDistrict: "Dabrowa",
     adressDetails: "Truskawkowa 12/3",
     time: "2h",
-    authorId: 'Hela',
+    authorId: "Hela",
     dog: {
       name: "Lizard",
       photo:
         "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
       age: 2,
-      describe: 'Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.',
-      attitude: 'pozytywny',
-      breed: 'kundelek'
+      describe:
+        "Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.",
+      attitude: "pozytywny",
+      breed: "kundelek",
     },
     price: "bezplatnie",
   };
@@ -56,15 +64,16 @@ export default function PostsManager() {
     adressDistrict: "Dabrowa",
     adressDetails: "Truskawkowa 12/3",
     time: "2h",
-    authorId: 'Marcin',
+    authorId: "Marcin",
     dog: {
       name: "Biedronka",
       photo:
         "https://static01.nyt.com/images/2019/06/17/science/17DOGS/17DOGS-mobileMasterAt3x-v2.jpg",
-        age: 2,
-        describe: 'Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.',
-        attitude: 'pozytywny',
-        breed: 'kundelek'
+      age: 2,
+      describe:
+        "Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.",
+      attitude: "pozytywny",
+      breed: "kundelek",
     },
     price: "bezplatnie",
   };
@@ -156,9 +165,17 @@ export default function PostsManager() {
               Szukaj
             </Button>
           </Grid>
-          <Grid item container md={12} xs={12} style={{ marginTop: "5%" }} spacing={2} justify='center'>
+          <Grid
+            item
+            container
+            md={12}
+            xs={12}
+            style={{ marginTop: "5%" }}
+            spacing={2}
+            justify="center"
+          >
             {posts.map((p) => (
-              <Grid item md = {3} key={p.postId}>
+              <Grid item md={3} key={p.postId}>
                 <Post post={p} />
               </Grid>
             ))}
@@ -168,3 +185,11 @@ export default function PostsManager() {
     </div>
   );
 }
+
+
+const mapStateToProps = (state) => ({
+  posts: getAllPosts(state),
+})
+
+
+export default connect(mapStateToProps, { getAllPosts })(PostsManager)

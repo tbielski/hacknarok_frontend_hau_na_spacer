@@ -1,7 +1,8 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, List, makeStyles } from "@material-ui/core";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ProfileDogs from "./ProfileDogs/ProfileDogs";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
@@ -35,6 +36,9 @@ const Profile = () => {
                 <Grid className={classes.paper}>
                     <ProfileInfo user={user} />
                 </Grid>
+            </Grid>
+            <Grid item sm={8} container justify="center">
+                <ProfileDogs />
             </Grid>
         </Grid>
     );

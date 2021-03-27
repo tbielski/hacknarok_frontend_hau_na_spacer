@@ -5,7 +5,9 @@ import App from './UI/App';
 import reportWebVitals from './reportWebVitals';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import brown from '@material-ui/core/colors/brown';
-import green from '@material-ui/core/colors/green'
+import green from '@material-ui/core/colors/green';
+import store from './ducks/store';
+import {Provider} from 'react-redux';
 
 const theme = createMuiTheme({
   palette: {
@@ -19,9 +21,11 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
+  <Provider store={store}>
     <ThemeProvider theme={theme} >
     <App />
-    </ThemeProvider>,
+    </ThemeProvider>
+    </Provider>,
   document.getElementById('root')
 );
 

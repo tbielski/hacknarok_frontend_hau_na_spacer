@@ -1,20 +1,22 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { combineReducers } from "redux";
+import { createMiddleware } from "redux-api-middleware";
 
-import { combineReducers } from 'redux';
-import { createMiddleware } from 'redux-api-middleware';
+import user from "./users/usersReducer";
 
-import usersReducer from './users/usersReducer';
+const rootReducer = combineReducers({ user });
 
-const rootReducer = combineReducers({ usersReducer })
+const initalState = {};
 
-const initalState = {
+const middleware = [thunk, createMiddleware(), logger];
 
-}
-
-const middleware = [thunk, createMiddleware(), logger]
-
-const store = createStore(rootReducer, initalState, applyMiddleware(...middleware))
+const store = createStore(
+    rootReducer,
+    initalState,
+    composeWithDevTools(applyMiddleware(...middleware))
+);
 
 export default store;

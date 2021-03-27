@@ -3,12 +3,7 @@ import {
     CardActionArea,
     CardMedia,
     Grid,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
     makeStyles,
-    Paper,
 } from "@material-ui/core";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import GradeIcon from "@material-ui/icons/Grade";

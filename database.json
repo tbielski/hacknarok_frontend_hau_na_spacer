@@ -2,6 +2,8 @@
     "users": [
         {
             "userId": 0,
+            "login": "jan",
+            "password": "12345678",
             "userFirstName": "Janusz",
             "userLastName": "Kowalski",
             "email": "jkowalski@gmail.com",
@@ -23,6 +25,8 @@
         },
         {
             "userId": 1,
+            "login": "marcin",
+            "password": "12345678",
             "userFirstName": "Marcin",
             "userLastName": "Nowak",
             "email": "mnowak@gmail.com",
@@ -40,6 +44,8 @@
         },
         {
             "userId": 2,
+            "login": "ola",
+            "password": "12345678",
             "userFirstName": "Ola",
             "userLastName": "Marcinika",
             "email": "omarciniak@gmail.com",

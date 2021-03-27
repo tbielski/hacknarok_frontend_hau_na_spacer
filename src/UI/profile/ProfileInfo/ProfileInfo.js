@@ -57,37 +57,42 @@ const ProfileInfo = ({ user }) => {
                     </CardActionArea>
                 </Card>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <Paper style={{ height: "100%" }}>
-                    <List alignitems="space-around">
-                        <ProfileInfoItem
-                            icon={<PersonIcon />}
-                            fieldName="imię"
-                            value={user.firstName}
-                        />
-                        <ProfileInfoItem
-                            icon={<PersonIcon />}
-                            fieldName="nazwisko"
-                            value={user.lastName}
-                        />
-                        <ProfileInfoItem
-                            icon={<EmailIcon />}
-                            fieldName="email"
-                            value={user.email}
-                        />
-                        <ProfileInfoItem
-                            icon={<GradeIcon />}
-                            fieldName="ocena"
-                            value={user.rating}
-                        />
+            <Grid
+                item
+                xs={12}
+                md={6}
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                }}
+            >
+                <ProfileInfoItem
+                    icon={<PersonIcon />}
+                    fieldName="imię"
+                    value={user.firstName}
+                />
+                <ProfileInfoItem
+                    icon={<PersonIcon />}
+                    fieldName="nazwisko"
+                    value={user.lastName}
+                />
+                <ProfileInfoItem
+                    icon={<EmailIcon />}
+                    fieldName="email"
+                    value={user.email}
+                />
+                <ProfileInfoItem
+                    icon={<GradeIcon />}
+                    fieldName="ocena"
+                    value={user.rating}
+                />
 
-                        <ProfileInfoItem
-                            fieldName="wiek"
-                            value={user.age}
-                            icon={<DateRangeIcon />}
-                        />
-                    </List>
-                </Paper>
+                <ProfileInfoItem
+                    fieldName="wiek"
+                    value={user.age}
+                    icon={<DateRangeIcon />}
+                />
             </Grid>
         </Grid>
     );

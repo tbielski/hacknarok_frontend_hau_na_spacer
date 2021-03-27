@@ -1,0 +1,94 @@
+{
+    "users": [
+        {
+            "userId": 0,
+            "userFirstName": "Janusz",
+            "userLastName": "Kowalski",
+            "email": "jkowalski@gmail.com",
+            "animalsArray": [
+                0
+            ],
+            "opinionsArray": [
+                0
+            ],
+            "postsArray": [
+                0
+            ],
+            "profileRating": "",
+            "describe": "Jestem wlascicielem super slodkiego Amstafa",
+            "userAge": 48,
+            "usersToRate": [
+                2
+            ]
+        },
+        {
+            "userId": 1,
+            "userFirstName": "Marcin",
+            "userLastName": "Nowak",
+            "email": "mnowak@gmail.com",
+            "animalsArray": [
+            ],
+            "opinionsArray": [
+            ],
+            "postsArray": [
+            ],
+            "profileRating": "",
+            "describe": "",
+            "userAge": 30,
+            "usersToRate": [
+            ]
+        },
+        {
+            "userId": 2,
+            "userFirstName": "Ola",
+            "userLastName": "Marcinika",
+            "email": "omarciniak@gmail.com",
+            "animalsArray": [
+            ],
+            "opinionsArray": [
+            ],
+            "postsArray": [
+            ],
+            "profileRating": "",
+            "describe": "",
+            "userAge": 33,
+            "usersToRate": [
+            ]
+        }
+    ],
+    "opinions": [
+        {
+            "opinionId": 0,
+            "text": "Super opinia",
+            "rating": 5,
+            "authorId": 1
+        }
+    ],
+    "animals": [
+        {
+            "animalId": 0,
+            "text": "Bardzo grzeczny",
+            "dogAge": 2,
+            "animalName": "Pimpek",
+            "breed": "Amstaf",
+            "attitude": "neutralny"
+        }
+    ],
+    "posts": [
+        {
+            "postId": 0,
+            "text": "jakis opisik zlecenia",
+            "applicationUsers": [
+                1
+            ],
+            "contact": "123456789",
+            "adressCity": "Gdynia",
+            "adressDistrict": "Dabrowa",
+            "adressDetails": "Truskawkowa 12/3",
+            "time": "2h",
+            "authorId": 0,
+            "dogId": 0,
+            "price": "bezplatnie"
+        }
+    ]
+}

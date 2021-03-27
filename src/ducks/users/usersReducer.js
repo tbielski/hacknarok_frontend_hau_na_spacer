@@ -7,7 +7,7 @@ export default function (state = initialState, action) {
         case USERS_SUCCESS: {
             return {
                 ...state,
-                user: action.payload,
+                ...action.payload,
             };
         }
 

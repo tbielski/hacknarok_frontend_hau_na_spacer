@@ -24,12 +24,14 @@ function App() {
           <Route path ="/konto/zarejestruj">
             <SignUp />
           </Route>
+          <Route path="/profil">
+              <Profile />
+           </Route>
         </Switch>
       </Router>
       {/* <Footer/> */}
       
     </div>
   );
-}
 
 export default App;

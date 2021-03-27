@@ -30,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
     main: {
         margin: theme.spacing(1),
     },
-    // card:{
-    //     maxHeight:
-    // }
 }));
 const ProfileInfo = ({ user }) => {
     const classes = useStyles();
@@ -89,8 +86,8 @@ const ProfileInfo = ({ user }) => {
                 />
 
                 <ProfileInfoItem
-                    fieldName="wiek"
-                    value={user.age}
+                    fieldName="opis"
+                    value={user.describe}
                     icon={<DateRangeIcon />}
                 />
             </Grid>

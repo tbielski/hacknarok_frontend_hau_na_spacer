@@ -7,6 +7,7 @@ import {
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Footer from './Footer';
+import Posts from './Posts/PostsManager';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
+          <Route path="/" exact>
+            <Posts />
+          </Route>
           <Route path="/konto" exact>
             <SignIn />
           </Route>

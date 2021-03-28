@@ -49,6 +49,7 @@ const dogsEx = [
 ];
 const ProfileDogs = ({ user }) => {
     const dogs = user.dogsArray;
+
     const classes = useStyles();
     const [clicked, setClicked] = useState(false);
     const [openPost, setOpenPost] = React.useState(false);
@@ -88,7 +89,7 @@ const ProfileDogs = ({ user }) => {
                         item
                         xs={12}
                         justify="space-around"
-                        spacing={0}
+                        spacing={2}
                     >
                         {dogs && dogs.length !== 0 ? (
                             dogs.map((dog) => <Dog dog={dog} />)
@@ -110,7 +111,7 @@ const ProfileDogs = ({ user }) => {
                             <Button
                                 variant="outlined"
                                 color="primary"
-                                style={{ width: "50%" }}
+                                style={{ width: "50%", margin: "5%" }}
                                 onClick={() => setOpenPost(true)}
                             >
                                 Dodaj psa!
@@ -120,7 +121,10 @@ const ProfileDogs = ({ user }) => {
                 )}
             </List>
             {openPost ? (
-                <AddDogForm handleClose={() => setOpenPost(false)} />
+                <AddDogForm
+                    user={user}
+                    handleClose={() => setOpenPost(false)}
+                />
             ) : null}
         </Grid>
     );

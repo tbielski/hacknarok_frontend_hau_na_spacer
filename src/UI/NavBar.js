@@ -52,7 +52,9 @@ const useStyles = makeStyles((theme) => ({
 function NavBar({ user }) {
 
   React.useEffect(() => {
-    Object.keys(user).length !== 0 && setValue(1)  
+    if(Object.keys(user).length !== 0) {
+      setValue(1)
+    } 
   }, [user])
 
   const classes = useStyles();
@@ -64,7 +66,8 @@ function NavBar({ user }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" >
+        {Object.keys(user).length !== 0 && <Redirect to='/profil' />}
         <Tabs
           value={value}
           onChange={handleChange}
@@ -78,7 +81,7 @@ function NavBar({ user }) {
             to="/"
             style={{ lineHeight: "60px" }}
           />
-          <Tab label="Profil" {...a11yProps(1)} component={Link} to="/profil" />
+
           {Object.keys(user).length === 0 ? (
             <Tab
               label="Zarejestruj / Zaloguj"
@@ -87,7 +90,7 @@ function NavBar({ user }) {
               to="/konto"
             />
           ) : (
-            <Redirect to='/profil' />
+            <Tab label="Profil" {...a11yProps(1)} component={Link} to="/profil" />
           )}
         </Tabs>
       </AppBar>

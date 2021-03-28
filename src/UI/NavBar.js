@@ -7,8 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { connect } from "react-redux";
-import { Link,Redirect } from "react-router-dom";
-
+import { Link, Redirect } from "react-router-dom";
+import logo from "../images/logo.png";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -50,10 +50,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavBar({ user }) {
-
   React.useEffect(() => {
-    Object.keys(user).length !== 0 && setValue(1)  
-  }, [user])
+    Object.keys(user).length !== 0 && setValue(1);
+  }, [user]);
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -64,7 +63,24 @@ function NavBar({ user }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="relative">
+        <img
+          src={logo}
+          alt="Logo"
+          style={{
+            maxHeight: "70px",
+            position: "absolute",
+            left: "40px",
+          }}
+        />
+        <h1  style={{
+            maxHeight: "70px",
+            position: "absolute",
+            left: "120px",
+          }}>
+        HauNaSpacer.pl
+        </h1>
+        
         <Tabs
           value={value}
           onChange={handleChange}
@@ -87,7 +103,7 @@ function NavBar({ user }) {
               to="/konto"
             />
           ) : (
-            <Redirect to='/profil' />
+            <Redirect to="/profil" />
           )}
         </Tabs>
       </AppBar>

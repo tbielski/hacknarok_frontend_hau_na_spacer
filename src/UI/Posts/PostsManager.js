@@ -108,7 +108,7 @@ function PostsManager({ getAllPosts, posts }) {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item md={2} xs={12}>
+                    <Grid item md={3} xs={12}>
                         <FormControl
                             variant="outlined"
                             className={classes.formControl}

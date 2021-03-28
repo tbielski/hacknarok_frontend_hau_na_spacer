@@ -72,7 +72,9 @@ const ProfilePosts = ({ user }) => {
                         spacing={2}
                     >
                         {posts && posts.length !== 0 ? (
-                            posts.map((post) => <Post post={post} />)
+                            posts.map((post) => (
+                                <Post post={post} dogs={user.dogsArray} />
+                            ))
                         ) : (
                             <Grid item xs={12}>
                                 <Typography style={{ textAlign: "center" }}>

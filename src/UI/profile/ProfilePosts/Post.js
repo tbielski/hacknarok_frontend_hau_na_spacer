@@ -10,6 +10,7 @@ import {
     Typography,
 } from "@material-ui/core";
 import React from "react";
+import PostDialog from "./PostDialog";
 
 // import PostDialog from "./PostDialog";
 
@@ -21,7 +22,9 @@ const useStyles = makeStyles({
         height: 300,
     },
 });
-const Post = ({ post }) => {
+const Post = ({ post, dogs }) => {
+    const dog = dogs.find((dog) => dog._id === post.dogId);
+
     const classes = useStyles();
     const [openPost, setOpenPost] = React.useState(false);
 
@@ -40,12 +43,12 @@ const Post = ({ post }) => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={`https://dummyimage.com/640x4:3&text=${post.dogName}`}
+                        image={`https://dummyimage.com/640x4:3&text=${dog.dogName}`}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {post.name}
+                            {dog.dogName}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -55,9 +58,13 @@ const Post = ({ post }) => {
                     </Button>
                 </CardActions>
             </Card>
-            {/* {openPost ? (
-                <DogDialog post={post} handleClose={() => setOpenPost(false)} />
-            ) : null} */}
+            {openPost ? (
+                <PostDialog
+                    post={post}
+                    dog={dog}
+                    handleClose={() => setOpenPost(false)}
+                />
+            ) : null}
         </Grid>
     );
 };

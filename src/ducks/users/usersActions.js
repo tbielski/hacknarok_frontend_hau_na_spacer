@@ -4,6 +4,7 @@ import {
     USERS_FAILURE,
     USERS_REQUEST,
     USERS_ADD_DOG,
+    USERS_ADD_POST,
 } from "./types";
 
 const login = (credentials) => async (dispatch) => {
@@ -41,12 +42,31 @@ const addDog = (dog) => async (dispatch) => {
         res.data
             ? dispatch({
                   type: USERS_ADD_DOG,
-                  payload: dog,
+                  payload: res.data,
               })
             : alert("Something went wrong");
     } catch (e) {
         console.log(e);
     }
 };
-const actions = { login, register, addDog };
+
+const addPost = (post) => async (dispatch) => {
+    try {
+        console.log(post);
+        const res = await axios.post(
+            `http://localhost:5000/posts/add-post`,
+            post
+        );
+        console.log(res);
+        res.data
+            ? dispatch({
+                  type: USERS_ADD_POST,
+                  payload: res.data,
+              })
+            : alert("Something went wrong");
+    } catch (e) {
+        console.log(e);
+    }
+};
+const actions = { login, register, addDog, addPost };
 export default actions;

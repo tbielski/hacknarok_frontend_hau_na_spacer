@@ -49,11 +49,6 @@ const Dog = ({ dog }) => {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary">
-                        Edytuj
-                    </Button>
-                </CardActions>
             </Card>
             {openPost ? (
                 <DogDialog dog={dog} handleClose={() => setOpenPost(false)} />

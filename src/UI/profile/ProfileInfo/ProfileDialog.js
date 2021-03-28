@@ -7,9 +7,9 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-// import { volunteer } from '../../ducks/posts/postsActions';
+import actions from "../../../ducks/users/usersActions";
 
-function ProfileDialog({ handleClose }) {
+function ProfileDialog({ handleClose, user, editUserDesc }) {
   const [desc, setDesc] = React.useState("");
   return (
     <div>
@@ -36,7 +36,7 @@ function ProfileDialog({ handleClose }) {
             />
           </Grid>
           <Grid item xs={12} style={{ margin: "2%" }}>
-            <Button size="small" color="primary" onClick={() => console.log(desc)}>
+            <Button size="small" color="primary" onClick={() =>{editUserDesc(user._id, desc); handleClose()}}>
               Zatwierdź
             </Button>
           </Grid>
@@ -46,4 +46,8 @@ function ProfileDialog({ handleClose }) {
   );
 }
 
-export default ProfileDialog;
+const mapStateToProps = (state) => ({
+    user: state.user,
+  });
+
+export default connect(mapStateToProps, { editUserDesc: actions.editUserDesc })(ProfileDialog);

@@ -34,6 +34,7 @@ const AddDogForm = ({ user, handleClose, addDog }) => {
         },
         onSubmit: (values) => {
             addDog({ ...values, authorId: user._id });
+            handleClose(false);
         },
     });
     return (
@@ -103,9 +104,9 @@ const AddDogForm = ({ user, handleClose, addDog }) => {
                                 }}
                             >
                                 <option aria-label="None" value="" />
-                                <option value={"neutral"}>Neutralny</option>
-                                <option value={"positive"}>Pozytywny</option>
-                                <option value={"aggresive"}>Agresywny</option>
+                                <option value={"neutralny"}>Neutralny</option>
+                                <option value={"pozytywny"}>Pozytywny</option>
+                                <option value={"agresywny"}>Agresywny</option>
                             </Select>
                         </FormControl>
                         <TextField

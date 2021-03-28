@@ -1,9 +1,8 @@
 import {
     USERS_SUCCESS,
-    ADD_USER,
-    REMOVE_USER,
-    EDIT_USER,
+    USERS_EDIT_DESC,
     USERS_ADD_DOG,
+    DOG_EDIT
 } from "./types";
 
 const initialState = {};
@@ -21,6 +20,17 @@ export default function (state = initialState, action) {
                 ...state,
                 ...action.payload,
             };
+        }
+
+        case USERS_EDIT_DESC: {
+            return action.payload
+        }
+
+        case DOG_EDIT: {
+            return {
+                ...state,
+                dogsArray: state.dogsArray.map(d => d._id === action.payload._id ? action.payload : d)
+            }
         }
 
         default:

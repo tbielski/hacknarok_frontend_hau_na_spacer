@@ -4,6 +4,8 @@ import {
     USERS_FAILURE,
     USERS_REQUEST,
     USERS_ADD_DOG,
+    USERS_EDIT_DESC,
+    DOG_EDIT
 } from "./types";
 
 const login = (credentials) => async (dispatch) => {
@@ -48,5 +50,30 @@ const addDog = (dog) => async (dispatch) => {
         console.log(e);
     }
 };
-const actions = { login, register, addDog };
+
+const editUserDesc = (idUser, describeUser) => async (dispatch) => {
+  try {
+    const res = await axios.put(`http://localhost:5000/users/edit-user`, {idUser, describeUser});
+    dispatch({
+      type: USERS_EDIT_DESC,
+      payload: res.data,
+  });
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const editDog = (dogId, values) => async (dispatch) => {
+  try {
+    const res = await axios.put(`http://localhost:5000/dogs/edit-dog`, {dogId, ...values});
+    dispatch({
+      type: DOG_EDIT,
+      payload: res.data,
+  });
+  } catch(e) {
+    console.log(e)
+  }
+}
+
+const actions = { login, register, addDog, editUserDesc, editDog };
 export default actions;

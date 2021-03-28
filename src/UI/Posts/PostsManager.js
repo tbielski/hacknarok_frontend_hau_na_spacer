@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -33,12 +33,24 @@ function PostsManager({ getAllPosts, posts }) {
   const [attitude, setAttitude] = React.useState("");
 
   function search() {
-    if(city){
-        return posts.filter(p => p.adressCity === city)
+    if (city) {
+      return posts.filter(
+        (p) =>
+          (p.adressCity === city || p.adressDistrict === city) &&
+          p.dogId.attitude.includes(attitude) &&
+          !isNaN(parseInt(p.price)) ?  
+          (parseInt(p.price) >= price[0] &&
+          parseInt(p.price) <= price[1]) : (0 >= price[0] && 0 <= price[1])
+      );
     } else {
-      return posts
+      return posts.filter(
+        (p) =>
+          p.dogId.attitude.includes(attitude) &&
+          parseInt(p.price) >= price[0] &&
+          parseInt(p.price) <= price[1]
+      );
     }
-}
+  }
 
   const handlePriceChange = (event, newValue) => {
     setPrice(newValue);
@@ -120,11 +132,6 @@ function PostsManager({ getAllPosts, posts }) {
               />
             </FormControl>
           </Grid>
-          <Grid item md={1} style={{ marginLeft: "2%", alignSelf: "center" }}>
-            <Button variant="outlined" color="primary">
-              Szukaj
-            </Button>
-          </Grid>
           <Grid
             item
             container
@@ -146,10 +153,8 @@ function PostsManager({ getAllPosts, posts }) {
   );
 }
 
-
 const mapStateToProps = (state) => ({
-  posts: state.posts
-})
+  posts: state.posts,
+});
 
-
-export default connect(mapStateToProps, { getAllPosts })(PostsManager)
+export default connect(mapStateToProps, { getAllPosts })(PostsManager);

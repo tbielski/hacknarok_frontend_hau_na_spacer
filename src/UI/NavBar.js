@@ -1,15 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import {
-    Link
-  } from "react-router-dom";
-  
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { connect } from "react-redux";
+import { Link,Redirect } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,18 +38,23 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
 }));
 
-export default function NavBar() {
+function NavBar({ user }) {
+
+  React.useEffect(() => {
+    Object.keys(user).length !== 0 && setValue(1)  
+  }, [user])
+
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -61,13 +64,41 @@ export default function NavBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" >
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" style={{ marginLeft: 'auto', minHeight: '60px' }}>
-          <Tab label="Ogłoszenia" {...a11yProps(0)} component={Link} to="/" style={{ lineHeight: '60px'}}/>
-          <Tab label="Profil" {...a11yProps(1)} component={Link} to="/profil"/>
-          <Tab label="Zarejestruj / Zaloguj" {...a11yProps(2)} component={Link} to="/konto"/>
+      <AppBar position="static">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+          style={{ marginLeft: "auto", minHeight: "60px" }}
+        >
+          <Tab
+            label="Ogłoszenia"
+            {...a11yProps(0)}
+            component={Link}
+            to="/"
+            style={{ lineHeight: "60px" }}
+          />
+          <Tab label="Profil" {...a11yProps(1)} component={Link} to="/profil" />
+          {Object.keys(user).length === 0 ? (
+            <Tab
+              label="Zarejestruj / Zaloguj"
+              {...a11yProps(2)}
+              component={Link}
+              to="/konto"
+            />
+          ) : (
+            <Redirect to='/profil' />
+          )}
         </Tabs>
       </AppBar>
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);

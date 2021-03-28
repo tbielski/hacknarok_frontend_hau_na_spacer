@@ -25,28 +25,11 @@ const useStyles = makeStyles((theme) => ({
         color: "rgba(255, 255, 255, 0.54)",
     },
 }));
-const dogsEx = [
-    {
-        name: "Lizard",
-        photo:
-            "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
-        age: 2,
-        describe:
-            "Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.",
-        attitude: "pozytywny",
-        breed: "kundelek",
-    },
-    {
-        name: "Biedronka",
-        photo:
-            "https://static01.nyt.com/images/2019/06/17/science/17DOGS/17DOGS-mobileMasterAt3x-v2.jpg",
-        age: 2,
-        describe:
-            "Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.",
-        attitude: "pozytywny",
-        breed: "kundelek",
-    },
-];
+const dogPhotos = [
+    "https://i.pinimg.com/originals/78/46/1b/78461bb236def12a3533c4187e5f1089.jpg",
+    "https://lchsmontana.org/wp-content/uploads/6145A1FD-2392-4CCD-B23F-78160EA10202_1_105_c-e1614377092307-500x500.jpeg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUv-9wlByFpthx7apeyUwxvfvDQDgcfAZKkA&usqp=CAU"
+]
 const ProfileDogs = ({ user }) => {
     const dogs = user.dogsArray;
 
@@ -92,7 +75,7 @@ const ProfileDogs = ({ user }) => {
                         spacing={2}
                     >
                         {dogs && dogs.length !== 0 ? (
-                            dogs.map((dog) => <Dog dog={dog} />)
+                            dogs.map((dog, index) => <Dog dog={dog} photo={dogPhotos[index]}/>)
                         ) : (
                             <Grid item xs={12}>
                                 <Typography style={{ textAlign: "center" }}>

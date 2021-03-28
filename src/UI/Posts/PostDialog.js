@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { volunteer } from '../../ducks/posts/postsActions';
 
-function PostDialog({ post, handleClose, user }) {
+function PostDialog({ post, handleClose, user, photo }) {
   return (
     <div>
       <Dialog
@@ -31,7 +31,7 @@ function PostDialog({ post, handleClose, user }) {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <img
-                src={`https://dummyimage.com/640x4:3&text=${post.dogId.dogName}`}
+                src={photo}
                 alt={post.postId}
                 height={300}
                 width={300}

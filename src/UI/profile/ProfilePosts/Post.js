@@ -43,7 +43,7 @@ const Post = ({ post, dogs }) => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={`https://dummyimage.com/640x4:3&text=${dog.dogName}`}
+                        image={'https://lchsmontana.org/wp-content/uploads/6145A1FD-2392-4CCD-B23F-78160EA10202_1_105_c-e1614377092307-500x500.jpeg'}
                         title="Contemplative Reptile"
                     />
                     <CardContent>

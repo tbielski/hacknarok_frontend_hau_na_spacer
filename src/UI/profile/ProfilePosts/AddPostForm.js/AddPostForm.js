@@ -29,9 +29,9 @@ const AddPostForm = ({ user, handleClose, addPost }) => {
         initialValues: {
             describePost: "",
             contact: "",
-            addressCity: "",
-            addressDistrict: "",
-            addressDetails: "",
+            adressCity: "",
+            adressDistrict: "",
+            adressDetails: "",
             time: "",
             price: "",
             authorId: user._id,
@@ -71,17 +71,18 @@ const AddPostForm = ({ user, handleClose, addPost }) => {
                             </InputLabel>
                             <Select
                                 native
+                                name="dogId"
                                 value={formik.values.dogId}
                                 onChange={formik.handleChange}
                                 label="Pies"
                                 inputProps={{
-                                    name: "attitude",
+                                    name: "dogId",
                                     id: "outlined-attitude-native-simple",
                                 }}
                             >
                                 <option aria-label="None" value="" />
                                 {user.dogsArray.map((dog) => (
-                                    <option value={dog._id}>
+                                    <option key={dog._id} value={dog._id}>
                                         {dog.dogName}
                                     </option>
                                 ))}
@@ -93,18 +94,21 @@ const AddPostForm = ({ user, handleClose, addPost }) => {
                         ></FormControl>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="outlined-attitude-native-simple">
-                                Pies
+                                Miasto
                             </InputLabel>
                             <Select
                                 native
-                                value={formik.values.city}
+                                value={formik.values.adressCity}
                                 onChange={formik.handleChange}
                                 label="Miasto"
+                                name="adressCity"
                                 inputProps={{
-                                    name: "attitude",
+                                    name: "adressCity",
                                     id: "outlined-attitude-native-simple",
                                 }}
                             >
+                                {" "}
+                                <option aria-label="None" value="" />
                                 <option aria-label="None" value="Gdynia">
                                     Gdynia
                                 </option>
@@ -115,32 +119,82 @@ const AddPostForm = ({ user, handleClose, addPost }) => {
                         </FormControl>
                         <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="outlined-attitude-native-simple">
-                                Pies
+                                Dzielnica
                             </InputLabel>
                             <Select
                                 native
-                                value={formik.dogId}
+                                value={formik.values.adressDistrict}
                                 onChange={formik.handleChange}
                                 label="Pies"
+                                name="adressDistrict"
                                 inputProps={{
-                                    name: "attitude",
+                                    name: "adressDistrict",
                                     id: "outlined-attitude-native-simple",
                                 }}
                             >
-                                {formik.values.city == "Gdańsk"}
-                                <option aria-label="None" value="Gdynia">
-                                    Gdynia
-                                </option>
-                                <option aria-label="None" value="Gdańsk">
-                                    Gdańsk
-                                </option>
+                                {" "}
+                                <option aria-label="None" value="" />
+                                {formik.values.adressCity === "Gdańsk" ? (
+                                    <>
+                                        <option aria-label="None" value="Oliwa">
+                                            Oliwa
+                                        </option>
+                                        <option
+                                            aria-label="None"
+                                            value="Przymorze"
+                                        >
+                                            Przymorze
+                                        </option>
+                                    </>
+                                ) : (
+                                    <>
+                                        <option aria-label="None" value="Redło">
+                                            Redłowo
+                                        </option>
+                                        <option
+                                            aria-label="None"
+                                            value="Witomino"
+                                        >
+                                            Witomino
+                                        </option>
+                                    </>
+                                )}
                             </Select>
                         </FormControl>
-
                         <TextField
-                            style={{ margin: "10%" }}
+                            style={{ margin: "3%" }}
                             id="standard-multiline-flexible"
-                            label="Kontakt"
+                            label="Adres szczegółowy"
+                            multiline
+                            name="adressDetails"
+                            rowsMax={4}
+                            value={formik.values.adressDetails}
+                            onChange={formik.handleChange}
+                        />
+                        <TextField
+                            style={{ margin: "3%" }}
+                            id="standard-multiline-flexible"
+                            label="Czas"
+                            multiline
+                            name="time"
+                            rowsMax={4}
+                            value={formik.values.time}
+                            onChange={formik.handleChange}
+                        />
+                        <TextField
+                            style={{ margin: "3%" }}
+                            id="standard-multiline-flexible"
+                            label="Cena"
+                            multiline
+                            name="price"
+                            rowsMax={4}
+                            value={formik.values.price}
+                            onChange={formik.handleChange}
+                        />
+                        <TextField
+                            style={{ margin: "3%" }}
+                            id="standard-multiline-flexible"
+                            label="Numer Telefonu"
                             multiline
                             name="contact"
                             rowsMax={4}
@@ -148,33 +202,13 @@ const AddPostForm = ({ user, handleClose, addPost }) => {
                             onChange={formik.handleChange}
                         />
                         <TextField
-                            type="number"
-                            style={{ margin: "10%" }}
+                            style={{ margin: "3%" }}
                             id="standard-multiline-flexible"
-                            label="Wiek"
-                            name="dogAge"
-                            value={formik.values.dogAge}
-                            onChange={formik.handleChange}
-                        />
-                        <TextField
-                            style={{ margin: "10%" }}
-                            id="standard-multiline-flexible"
-                            label="Rasa"
+                            label="Opis"
                             multiline
-                            name="breed"
+                            name="describePost"
                             rowsMax={4}
-                            value={formik.values.breed}
-                            onChange={formik.handleChange}
-                        />
-
-                        <TextField
-                            style={{ margin: "10%" }}
-                            id="standard-multiline-flexible"
-                            label="opis"
-                            multiline
-                            name="describeDog"
-                            rowsMax={4}
-                            value={formik.values.describeDog}
+                            value={formik.values.describePost}
                             onChange={formik.handleChange}
                         />
                     </Grid>

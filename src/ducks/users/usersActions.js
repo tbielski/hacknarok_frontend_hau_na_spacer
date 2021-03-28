@@ -1,12 +1,15 @@
 import axios from "axios";
 import {
-  USERS_SUCCESS,
-  USERS_FAILURE,
-  USERS_REQUEST,
-  USERS_ADD_DOG,
-  USERS_EDIT_DESC,
-  DOG_EDIT,
-  DELETE_DOG,
+
+    USERS_SUCCESS,
+    USERS_FAILURE,
+    USERS_REQUEST,
+    USERS_ADD_DOG,
+    USERS_ADD_POST,
+    USERS_EDIT_DESC,
+    DOG_EDIT,
+    DELETE_DOG,
+
 } from "./types";
 
 const login = (credentials) => async (dispatch) => {
@@ -38,19 +41,40 @@ const register = async (credentials) => {
   }
 };
 const addDog = (dog) => async (dispatch) => {
-  try {
-    const res = await axios.post(`http://localhost:5000/dogs/add-dog`, dog);
-    console.log(res);
-    res.data
-      ? dispatch({
-          type: USERS_ADD_DOG,
-          payload: dog,
-        })
-      : alert("Something went wrong");
-  } catch (e) {
-    console.log(e);
-  }
+    try {
+        const res = await axios.post(`http://localhost:5000/dogs/add-dog`, dog);
+        console.log(res);
+        res.data
+            ? dispatch({
+                  type: USERS_ADD_DOG,
+                  payload: res.data,
+              })
+            : alert("Something went wrong");
+    } catch (e) {
+        console.log(e);
+    }
 };
+
+const addPost = (post) => async (dispatch) => {
+    try {
+        console.log(post);
+        const res = await axios.post(
+            `http://localhost:5000/posts/add-post`,
+            post
+        );
+        console.log(res);
+        res.data
+            ? dispatch({
+                  type: USERS_ADD_POST,
+                  payload: res.data,
+              })
+            : alert("Something went wrong");
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+
 
 const editUserDesc = (idUser, describeUser) => async (dispatch) => {
   try {
@@ -97,5 +121,6 @@ const deleteDog = (dogId, authorId) => async (dispatch) => {
   }
 };
 
-const actions = { login, register, addDog, editUserDesc, editDog, deleteDog };
+const actions = { login, register, addDog, editUserDesc, editDog, deleteDog,addPost };
+
 export default actions;

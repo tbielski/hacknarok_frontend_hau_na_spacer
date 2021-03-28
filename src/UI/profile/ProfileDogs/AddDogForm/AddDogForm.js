@@ -95,7 +95,7 @@ const AddDogForm = ({ user, handleClose, addDog }) => {
                             </InputLabel>
                             <Select
                                 native
-                                value={formik.attitude}
+                                value={formik.values.attitude}
                                 onChange={formik.handleChange}
                                 label="Stosunek do innych psów"
                                 inputProps={{

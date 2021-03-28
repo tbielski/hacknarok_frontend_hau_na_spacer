@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   Dialog,
   DialogTitle,
@@ -6,8 +7,9 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
+import { volunteer } from '../../ducks/posts/postsActions';
 
-function PostDialog({ post, handleClose }) {
+function PostDialog({ post, handleClose, user }) {
   return (
     <div>
       <Dialog
@@ -69,9 +71,11 @@ function PostDialog({ post, handleClose }) {
               <Typography gutterBottom>
                 <b>Kontakt</b>: {post.contact}
               </Typography>
-              <Button size="small" color="primary">
+              {Object.keys(user).length !== 0 ? 
+              <Button size="small" color="primary" onClick={() => volunteer(user._id, post._id)}>
                 Zgłoś się!
               </Button>
+              : null}
             </Grid>
           </Grid>
         </Grid>
@@ -80,4 +84,9 @@ function PostDialog({ post, handleClose }) {
   );
 }
 
-export default PostDialog;
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(PostDialog);

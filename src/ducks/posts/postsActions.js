@@ -13,3 +13,12 @@ export const getAllPosts = () => async dispatch => {
   }
 };
 
+export const volunteer = async (userId, postId) => {
+  try {
+    const res = await axios.post(`http://localhost:5000/posts/add-response`, { userId, postId });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+

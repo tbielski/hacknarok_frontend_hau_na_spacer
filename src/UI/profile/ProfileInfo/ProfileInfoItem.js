@@ -6,7 +6,10 @@ const ProfileInfoItem = ({ fieldName, value, icon }) => {
         <Card>
             <ListItem>
                 <ListItemIcon>{icon}</ListItemIcon>
-                <ListItemText primary={value} secondary={fieldName} />
+                <ListItemText
+                    primary={value !== "" ? value : "no information"}
+                    secondary={fieldName}
+                />
             </ListItem>
         </Card>
     );

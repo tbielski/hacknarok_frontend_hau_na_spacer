@@ -10,6 +10,8 @@ import {
     Typography,
 } from "@material-ui/core";
 import React from "react";
+import AddDogForm from "./AddDogForm/AddDogForm";
+
 const useStyles = makeStyles({
     root: {
         minWidth: "100%",
@@ -20,6 +22,7 @@ const useStyles = makeStyles({
 });
 const Dog = ({ dog }) => {
     const classes = useStyles();
+    const [openPost, setOpenPost] = React.useState(false);
     return (
         <Grid
             item
@@ -28,7 +31,6 @@ const Dog = ({ dog }) => {
             style={{
                 display: "flex",
                 justifyContent: "center",
-
                 marginTop: 10,
             }}
         >
@@ -46,12 +48,21 @@ const Dog = ({ dog }) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Button
+                        size="small"
+                        color="primary"
+                        onClick={() => setOpenPost(true)}
+                    >
                         Edytuj
                     </Button>
                 </CardActions>
+                {openPost ? console.log("kupa") : null}
+                {/* {openPost
+                    ? "<AddDogForm handleClose={() => setOpenPost(false)} />"
+                    : null} */}
             </Card>
         </Grid>
     );
 };
+
 export default Dog;

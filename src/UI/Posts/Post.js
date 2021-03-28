@@ -28,23 +28,18 @@ export default function Post({ post }) {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={post.dog.photo}
+            image={`https://dummyimage.com/640x4:3&text=${post.dogId.dogName}`}
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {post.dog.name}
+              {post.dogId.dogName}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {post.text}
+              {post.describePost}
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Zgłoś się!
-          </Button>
-        </CardActions>
       </Card>
       {openPost ? (
           <PostDialog post={post} handleClose={() => setOpenPost(false)} />

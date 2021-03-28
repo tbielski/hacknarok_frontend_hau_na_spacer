@@ -6,7 +6,7 @@ export default function (state = initialState, action) {
     switch (action.type) {
 
         case POSTS_SUCCESS: {
-            return [...state, action.payload]
+            return [...state, ...action.payload]
         }
 
         default:

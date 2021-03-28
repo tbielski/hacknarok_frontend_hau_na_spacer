@@ -18,7 +18,9 @@ function PostDialog({ post, handleClose }) {
       >
         <Grid container justify="center">
           <Grid item>
-            <DialogTitle id="simple-dialog-title">{post.dog.name}</DialogTitle>
+            <DialogTitle id="simple-dialog-title">
+              {post.dogId.dogName}
+            </DialogTitle>
           </Grid>
           <Grid item xs={12}>
             <Grid
@@ -27,7 +29,7 @@ function PostDialog({ post, handleClose }) {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <img
-                src={post.dog.photo}
+                src={`https://dummyimage.com/640x4:3&text=${post.dogId.dogName}`}
                 alt={post.postId}
                 height={300}
                 width={300}
@@ -35,22 +37,37 @@ function PostDialog({ post, handleClose }) {
             </Grid>
             <Grid item xs={12} style={{ margin: "2%" }}>
               <Typography gutterBottom>
-                <b>Imię</b>: {post.dog.name}
+                <b>Ogłoszenie</b>: {post.describePost}
               </Typography>
               <Typography gutterBottom>
-                <b>Wiek</b>: {post.dog.age}
+                <b>Miasto</b>: {post.adressCity}
               </Typography>
               <Typography gutterBottom>
-                <b>Opis</b>: {post.dog.describe}
+                <b>Dzielnica</b>: {post.adressDistrict}
               </Typography>
               <Typography gutterBottom>
-                <b>Stosunek do innych psów</b>: {post.dog.attitude}
+                <b>Zapłata</b>: {post.price}
               </Typography>
               <Typography gutterBottom>
-                <b>Rasa</b>: {post.dog.breed}
+                <b>Czas wyjścia</b>: {post.time}
               </Typography>
               <Typography gutterBottom>
-                <b>Ogłoszenie</b>: {post.text}
+                <b>Imię psa</b>: {post.dogId.dogName}
+              </Typography>
+              <Typography gutterBottom>
+                <b>Wiek psa</b>: {post.dogId.dogAge}
+              </Typography>
+              <Typography gutterBottom>
+                <b>Opis psa</b>: {post.dogId.describeDog}
+              </Typography>
+              <Typography gutterBottom>
+                <b>Stosunek do innych psów</b>: {post.dogId.attitude}
+              </Typography>
+              <Typography gutterBottom>
+                <b>Rasa</b>: {post.dogId.breed}
+              </Typography>
+              <Typography gutterBottom>
+                <b>Kontakt</b>: {post.contact}
               </Typography>
               <Button size="small" color="primary">
                 Zgłoś się!

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PostsManager({ getAllPosts }) {
+function PostsManager({ getAllPosts, posts }) {
   React.useEffect(() => {
     getAllPosts();
   }, []);
@@ -32,53 +32,13 @@ function PostsManager({ getAllPosts }) {
   const [price, setPrice] = React.useState([10, 50]);
   const [attitude, setAttitude] = React.useState("");
 
-  const postLizard = {
-    postId: 0,
-    text: "Hejka! Mój Ciapek potrzebuje opiekuna spacerów!",
-    applicationUsers: [1],
-    contact: "123456789",
-    adressCity: "Gdynia",
-    adressDistrict: "Dabrowa",
-    adressDetails: "Truskawkowa 12/3",
-    time: "2h",
-    authorId: "Hela",
-    dog: {
-      name: "Lizard",
-      photo:
-        "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
-      age: 2,
-      describe:
-        "Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.",
-      attitude: "pozytywny",
-      breed: "kundelek",
-    },
-    price: "bezplatnie",
-  };
-
-  const postLadyBug = {
-    postId: 1,
-    text: "Hejka! Moja Biedronka potrzebuje opiekuna spacerów!",
-    applicationUsers: [1],
-    contact: "123456789",
-    adressCity: "Gdynia",
-    adressDistrict: "Dabrowa",
-    adressDetails: "Truskawkowa 12/3",
-    time: "2h",
-    authorId: "Marcin",
-    dog: {
-      name: "Biedronka",
-      photo:
-        "https://static01.nyt.com/images/2019/06/17/science/17DOGS/17DOGS-mobileMasterAt3x-v2.jpg",
-      age: 2,
-      describe:
-        "Biedronka jest wesołym pieskiem, lubi długie spacery. Jej hobby jest gonienie gołębi.",
-      attitude: "pozytywny",
-      breed: "kundelek",
-    },
-    price: "bezplatnie",
-  };
-
-  const posts = [postLizard, postLadyBug];
+  function search() {
+    if(city){
+        return posts.filter(p => p.adressCity === city)
+    } else {
+      return posts
+    }
+}
 
   const handlePriceChange = (event, newValue) => {
     setPrice(newValue);
@@ -109,14 +69,14 @@ function PostsManager({ getAllPosts }) {
               >
                 <option aria-label="None" value="" />
                 <optgroup label="Gdańsk">
-                  <option value="all">Całe miasto</option>
-                  <option value="oliwa">Oliwa</option>
-                  <option value="przymorze">Przymorze</option>
+                  <option value="Gdansk">Całe miasto</option>
+                  <option value="Oliwa">Oliwa</option>
+                  <option value="Przymorze">Przymorze</option>
                 </optgroup>
                 <optgroup label="Gdynia">
-                  <option value="all">Całe miasto</option>
-                  <option value="redlowo">Redłowo</option>
-                  <option value="witomino">Witomino</option>
+                  <option value="Gdynia">Całe miasto</option>
+                  <option value="Redlowo">Redłowo</option>
+                  <option value="Witomino">Witomino</option>
                 </optgroup>
               </Select>
             </FormControl>
@@ -141,9 +101,9 @@ function PostsManager({ getAllPosts }) {
                 }}
               >
                 <option aria-label="None" value="" />
-                <option value={"neutral"}>Neutralny</option>
-                <option value={"positive"}>Pozytywny</option>
-                <option value={"aggresive"}>Agresywny</option>
+                <option value={"neutralny"}>Neutralny</option>
+                <option value={"pozytywny"}>Pozytywny</option>
+                <option value={"negatywny"}>Negatywny</option>
               </Select>
             </FormControl>
           </Grid>
@@ -174,8 +134,8 @@ function PostsManager({ getAllPosts }) {
             spacing={2}
             justify="center"
           >
-            {posts.map((p) => (
-              <Grid item md={3} key={p.postId}>
+            {search().map((p) => (
+              <Grid item md={3} key={p._id}>
                 <Post post={p} />
               </Grid>
             ))}
@@ -188,7 +148,7 @@ function PostsManager({ getAllPosts }) {
 
 
 const mapStateToProps = (state) => ({
-  posts: getAllPosts(state),
+  posts: state.posts
 })
 
 

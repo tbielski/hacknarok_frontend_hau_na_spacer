@@ -2,7 +2,8 @@ import {
     USERS_SUCCESS,
     USERS_EDIT_DESC,
     USERS_ADD_DOG,
-    DOG_EDIT
+    DOG_EDIT,
+    DELETE_DOG
 } from "./types";
 
 const initialState = {};
@@ -32,6 +33,12 @@ export default function (state = initialState, action) {
                 dogsArray: state.dogsArray.map(d => d._id === action.payload._id ? action.payload : d)
             }
         }
+
+        case DELETE_DOG:
+            return {
+                ...state,
+                dogsArray: state.dogsArray.filter(d => d._id !== action.payload)
+            }
 
         default:
             return state;

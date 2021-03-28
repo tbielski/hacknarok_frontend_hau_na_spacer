@@ -6,7 +6,9 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
+import { connect } from "react-redux";
 import EditDog from "./EditDog";
+import actions from "../../../ducks/users/usersActions";
 
 function Info(dog) {
   return (
@@ -30,8 +32,7 @@ function Info(dog) {
   );
 }
 
-
-function DogDialog({ dog, handleClose }) {
+function DogDialog({ dog, handleClose, deleteDog, user }) {
   const [edit, setEdit] = React.useState(false);
 
   return (
@@ -63,12 +64,29 @@ function DogDialog({ dog, handleClose }) {
               />
             </Grid>
             <Grid item xs={12} style={{ margin: "2%" }}>
-              {edit ? <EditDog dog={dog} handleClose={handleClose} /> : <Info dog={dog} />}
+              {edit ? (
+                <EditDog dog={dog} handleClose={handleClose} />
+              ) : (
+                <Info dog={dog} />
+              )}
             </Grid>
             <Grid item xs={12} style={{ margin: "2%" }}>
-              {!edit ? <Button size="small" color="primary" onClick={() => setEdit(prev => !prev)}>
-                Edytuj
-              </Button> : null}
+              {!edit ? (
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => setEdit((prev) => !prev)}
+                >
+                  Edytuj
+                </Button>
+              ) : null}
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => deleteDog(dog._id, user._id)}
+              >
+                Usuń
+              </Button>
             </Grid>
           </Grid>
         </Grid>
@@ -77,4 +95,9 @@ function DogDialog({ dog, handleClose }) {
   );
 }
 
-export default DogDialog;
+const mapStateToProps = (state) => ({
+    user: state.user,
+  });
+  
+
+export default connect(mapStateToProps, { deleteDog: actions.deleteDog })(DogDialog);

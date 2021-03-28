@@ -2,17 +2,17 @@ import React from "react";
 import {
     Dialog,
     DialogTitle,
-    Typography,
     Grid,
     Button,
     TextField,
     Select,
-    MenuItem,
     InputLabel,
     FormControl,
     makeStyles,
 } from "@material-ui/core";
+import { connect } from "react-redux";
 import { useFormik } from "formik";
+import actions from "../../../../ducks/users/usersActions";
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(2),
     },
 }));
-const AddDogForm = ({ handleClose }) => {
+const AddDogForm = ({ user, handleClose, addDog }) => {
     const classes = useStyles();
     const formik = useFormik({
         initialValues: {
@@ -33,7 +33,7 @@ const AddDogForm = ({ handleClose }) => {
             describeDog: "",
         },
         onSubmit: (values) => {
-            console.log(values);
+            addDog({ ...values, authorId: user._id });
         },
     });
     return (
@@ -64,9 +64,9 @@ const AddDogForm = ({ handleClose }) => {
                             id="standard-multiline-flexible"
                             label="Imię"
                             multiline
-                            name="name"
+                            name="dogName"
                             rowsMax={4}
-                            value={formik.values.name}
+                            value={formik.values.dogName}
                             onChange={formik.handleChange}
                         />
                         <TextField
@@ -74,9 +74,7 @@ const AddDogForm = ({ handleClose }) => {
                             style={{ margin: "10%" }}
                             id="standard-multiline-flexible"
                             label="Wiek"
-                            multiline
-                            name="age"
-                            rowsMax={4}
+                            name="dogAge"
                             value={formik.values.dogAge}
                             onChange={formik.handleChange}
                         />
@@ -134,4 +132,4 @@ const AddDogForm = ({ handleClose }) => {
         </Dialog>
     );
 };
-export default AddDogForm;
+export default connect(null, { addDog: actions.addDog })(AddDogForm);

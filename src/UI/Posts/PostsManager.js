@@ -7,7 +7,6 @@ import Select from "@material-ui/core/Select";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Post from "./Post";
 
 import { getAllPosts } from "../../ducks/posts/postsActions";

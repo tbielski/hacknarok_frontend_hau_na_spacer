@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Post({ post }) {
+export default function Post({ post, photo }) {
   const classes = useStyles();
   const [openPost, setOpenPost] = React.useState(false);
 
@@ -28,7 +28,7 @@ export default function Post({ post }) {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={`https://dummyimage.com/640x4:3&text=${post.dogId.dogName}`}
+            image={photo}
             title="Contemplative Reptile"
           />
           <CardContent>
@@ -42,7 +42,7 @@ export default function Post({ post }) {
         </CardActionArea>
       </Card>
       {openPost ? (
-          <PostDialog post={post} handleClose={() => setOpenPost(false)} />
+        <PostDialog post={post} photo={photo} handleClose={() => setOpenPost(false)} />
       ) : null}
     </>
   );

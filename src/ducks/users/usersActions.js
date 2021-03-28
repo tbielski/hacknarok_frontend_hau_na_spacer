@@ -110,7 +110,7 @@ const deleteDog = (dogId, authorId) => async (dispatch) => {
   try {
     const res = await axios.delete(
       `http://localhost:5000/dogs/delete-dog`,
-      {dogId, authorId}
+      { data: {dogId, authorId} }
     );
     dispatch({
       type: DELETE_DOG,

@@ -32,7 +32,7 @@ function Info(dog) {
   );
 }
 
-function DogDialog({ dog, handleClose, deleteDog, user }) {
+function DogDialog({ dog, handleClose, deleteDog, user, photo }) {
   const [edit, setEdit] = React.useState(false);
 
   return (
@@ -57,7 +57,7 @@ function DogDialog({ dog, handleClose, deleteDog, user }) {
               }}
             >
               <img
-                src={`https://dummyimage.com/640x4:3&text=${dog.dogName}`}
+                src={photo}
                 alt={dog.dogId}
                 height={300}
                 width={300}

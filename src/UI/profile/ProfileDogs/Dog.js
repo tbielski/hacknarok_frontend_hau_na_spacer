@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         height: 300,
     },
 });
-const Dog = ({ dog }) => {
+const Dog = ({ dog, photo }) => {
     const classes = useStyles();
     const [openPost, setOpenPost] = React.useState(false);
 
@@ -40,7 +40,7 @@ const Dog = ({ dog }) => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={`https://dummyimage.com/640x4:3&text=${dog.dogName}`}
+                        image={photo}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
@@ -51,7 +51,7 @@ const Dog = ({ dog }) => {
                 </CardActionArea>
             </Card>
             {openPost ? (
-                <DogDialog dog={dog} handleClose={() => setOpenPost(false)} />
+                <DogDialog dog={dog} photo={photo} handleClose={() => setOpenPost(false)} />
             ) : null}
         </Grid>
     );

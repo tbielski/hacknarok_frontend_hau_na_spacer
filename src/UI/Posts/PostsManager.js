@@ -30,6 +30,14 @@ function PostsManager({ getAllPosts, posts }) {
     const [city, setCity] = React.useState("");
     const [price, setPrice] = React.useState([10, 50]);
     const [attitude, setAttitude] = React.useState("");
+    const photos = [
+      "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg",
+      "https://i.guim.co.uk/img/media/684c9d087dab923db1ce4057903f03293b07deac/205_132_1915_1150/master/1915.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=14a95b5026c1567b823629ba35c40aa0",
+      "https://i.guim.co.uk/img/media/20098ae982d6b3ba4d70ede3ef9b8f79ab1205ce/0_0_969_1005/master/969.jpg?width=700&quality=85&auto=format&fit=max&s=470657ebd2a0e704df88997d393aea15",
+      "https://selfiedogs.files.wordpress.com/2017/04/image6.jpg",
+      "https://www.doggoneseattle.org/wp-content/uploads/2014/05/DogGoneSeattle22-e1510427431363-500x500.jpg",
+      "https://i.pinimg.com/originals/78/46/1b/78461bb236def12a3533c4187e5f1089.jpg"
+    ]
 
     function search() {
         if (city) {
@@ -148,9 +156,9 @@ function PostsManager({ getAllPosts, posts }) {
                         spacing={2}
                         justify="center"
                     >
-                        {search().map((p) => (
+                        {search().map((p, index) => (
                             <Grid item md={3} key={p._id}>
-                                <Post post={p} />
+                                <Post post={p} photo={photos[index]}/>
                             </Grid>
                         ))}
                     </Grid>

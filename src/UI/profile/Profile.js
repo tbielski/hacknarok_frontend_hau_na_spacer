@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import { Grid, List, makeStyles } from "@material-ui/core";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileDogs from "./ProfileDogs/ProfileDogs";
+import { connect } from "react-redux";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
@@ -17,18 +18,18 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
 }));
-const user = {
-    userId: 0,
-    firstName: "Janusz",
-    lastName: "Kowalski",
-    email: "jkowalski@gmail.com",
+// const user = {
+//     userId: 0,
+//     firstName: "Janusz",
+//     lastName: "Kowalski",
+//     email: "jkowalski@gmail.com",
 
-    rating: 4.2,
-    describe: "Jestem wlascicielem super slodkiego Amstafa",
-    age: 48,
-    usersToRate: [2],
-};
-const Profile = () => {
+//     rating: 4.2,
+//     describe: "Jestem wlascicielem super slodkiego Amstafa",
+//     age: 48,
+//     usersToRate: [2],
+// };
+const Profile = ({ user }) => {
     const classes = useStyles();
     return (
         <Grid container justify="center" direction="row">
@@ -38,9 +39,13 @@ const Profile = () => {
                 </Grid>
             </Grid>
             <Grid item sm={8} container justify="center">
-                <ProfileDogs />
+                <ProfileDogs user={user} />
             </Grid>
         </Grid>
     );
 };
-export default Profile;
+
+const mapStateToProps = (state) => ({
+    user: state.user,
+});
+export default connect(mapStateToProps, null)(Profile);

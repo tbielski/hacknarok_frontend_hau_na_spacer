@@ -77,12 +77,12 @@ const ProfileInfo = ({ user }) => {
                 <ProfileInfoItem
                     icon={<GradeIcon />}
                     fieldName="ocena"
-                    value={user.rating}
+                    value={user.profileRating}
                 />
 
                 <ProfileInfoItem
                     fieldName="opis"
-                    value={user.describe}
+                    value={user.describeUser}
                     icon={<DateRangeIcon />}
                 />
             </Grid>

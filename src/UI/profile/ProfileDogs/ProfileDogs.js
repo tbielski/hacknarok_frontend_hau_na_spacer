@@ -1,4 +1,5 @@
 import {
+    Button,
     Grid,
     List,
     ListItem,
@@ -7,6 +8,7 @@ import {
     Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
+import AddDogForm from "./AddDogForm/AddDogForm";
 import Dog from "./Dog";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,12 +47,21 @@ const dogsEx = [
         breed: "kundelek",
     },
 ];
-const ProfileDogs = ({ dogs }) => {
+const ProfileDogs = ({ user }) => {
+    const dogs = user.dogsArray;
     const classes = useStyles();
     const [clicked, setClicked] = useState(false);
+    const [openPost, setOpenPost] = React.useState(false);
     return (
         <Grid item xs={12}>
-            <List style={{ width: "100%" }}>
+            <List
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
+            >
                 <ListItem
                     className={classes.listItem}
                     button
@@ -72,13 +83,45 @@ const ProfileDogs = ({ dogs }) => {
                     />
                 </ListItem>
                 {clicked && (
-                    <Grid container xs={12} justify="space-around" spacing={0}>
-                        {dogsEx.map((dog) => (
-                            <Dog dog={dog} />
-                        ))}
+                    <Grid
+                        container
+                        item
+                        xs={12}
+                        justify="space-around"
+                        spacing={0}
+                    >
+                        {dogs && dogs.length !== 0 ? (
+                            dogs.map((dog) => <Dog dog={dog} />)
+                        ) : (
+                            <Grid item xs={12}>
+                                <Typography style={{ textAlign: "center" }}>
+                                    Brak dodanych psów
+                                </Typography>
+                            </Grid>
+                        )}
+                        <Grid
+                            item
+                            xs={12}
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                style={{ width: "50%" }}
+                                onClick={() => setOpenPost(true)}
+                            >
+                                Dodaj psa!
+                            </Button>
+                        </Grid>
                     </Grid>
                 )}
             </List>
+            {openPost ? (
+                <AddDogForm handleClose={() => setOpenPost(false)} />
+            ) : null}
         </Grid>
     );
 };

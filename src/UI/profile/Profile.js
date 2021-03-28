@@ -1,6 +1,5 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import { Grid, List, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileDogs from "./ProfileDogs/ProfileDogs";
 import { connect } from "react-redux";
@@ -18,17 +17,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
 }));
-// const user = {
-//     userId: 0,
-//     firstName: "Janusz",
-//     lastName: "Kowalski",
-//     email: "jkowalski@gmail.com",
-
-//     rating: 4.2,
-//     describe: "Jestem wlascicielem super slodkiego Amstafa",
-//     age: 48,
-//     usersToRate: [2],
-// };
 const Profile = ({ user }) => {
     const classes = useStyles();
     return (

@@ -36,7 +36,7 @@ function PostsManager({ getAllPosts, posts }) {
       "https://i.guim.co.uk/img/media/20098ae982d6b3ba4d70ede3ef9b8f79ab1205ce/0_0_969_1005/master/969.jpg?width=700&quality=85&auto=format&fit=max&s=470657ebd2a0e704df88997d393aea15",
       "https://selfiedogs.files.wordpress.com/2017/04/image6.jpg",
       "https://www.doggoneseattle.org/wp-content/uploads/2014/05/DogGoneSeattle22-e1510427431363-500x500.jpg",
-      "https://i.pinimg.com/originals/78/46/1b/78461bb236def12a3533c4187e5f1089.jpg"
+      "https://lchsmontana.org/wp-content/uploads/6145A1FD-2392-4CCD-B23F-78160EA10202_1_105_c-e1614377092307-500x500.jpeg"
     ]
 
     function search() {

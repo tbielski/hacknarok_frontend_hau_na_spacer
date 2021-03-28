@@ -8,8 +8,6 @@ import {
     Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import AddPostForm from "./AddPostForm.js/AddPostForm";
-import Post from "./Post";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ProfilePosts = ({ user }) => {
+const ProfileTasks = ({ user }) => {
     const posts = user.postsArray;
 
     const classes = useStyles();
@@ -57,7 +55,7 @@ const ProfilePosts = ({ user }) => {
                                     variant="h3"
                                     style={{ textAlign: "center" }}
                                 >
-                                    <b>Moje ogłoszenia</b>
+                                    <b>Moje zadania</b>
                                 </Typography>
                             </>
                         }
@@ -71,7 +69,7 @@ const ProfilePosts = ({ user }) => {
                         justify="space-around"
                         spacing={2}
                     >
-                        {posts && posts.length !== 0 ? (
+                        {/* {posts && posts.length !== 0 ? (
                             posts.map((post) => (
                                 <Post
                                     post={post}
@@ -85,7 +83,7 @@ const ProfilePosts = ({ user }) => {
                                     Brak dodanych ogłoszeń
                                 </Typography>
                             </Grid>
-                        )}
+                        )} */}
                         <Grid
                             item
                             xs={12}
@@ -105,14 +103,8 @@ const ProfilePosts = ({ user }) => {
                         </Grid>
                     </Grid>
                 )}
-                {openPost ? (
-                    <AddPostForm
-                        user={user}
-                        handleClose={() => setOpenPost(false)}
-                    />
-                ) : null}
             </List>
         </Grid>
     );
 };
-export default ProfilePosts;
+export default ProfileTasks;

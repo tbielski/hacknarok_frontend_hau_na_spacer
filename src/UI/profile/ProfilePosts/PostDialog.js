@@ -68,7 +68,7 @@ function PostDialog({ post, dog, handleClose }) {
                             <Typography gutterBottom>
                                 <b>Kontakt</b>: {post.contact}
                             </Typography>
-                            <ResponsesList />
+                            <ResponsesList responses={post.responses} />
                         </Grid>
                     </Grid>
                 </Grid>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, makeStyles } from "@material-ui/core";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileDogs from "./ProfileDogs/ProfileDogs";
 import { connect } from "react-redux";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
+import actions from "../../ducks/users/usersActions";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
@@ -18,7 +19,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
 }));
-const Profile = ({ user }) => {
+const Profile = ({ user, login }) => {
+    useEffect(() => {
+        login({ email: user.email, password: user.password });
+    }, [login, user.email, user.password]);
     const classes = useStyles();
     return (
         <Grid container justify="center" direction="row">
@@ -38,4 +42,4 @@ const Profile = ({ user }) => {
 const mapStateToProps = (state) => ({
     user: state.user,
 });
-export default connect(mapStateToProps, null)(Profile);
+export default connect(mapStateToProps, { login: actions.login })(Profile);

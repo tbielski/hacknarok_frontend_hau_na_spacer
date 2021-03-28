@@ -8,6 +8,8 @@ import {
     makeStyles,
     Typography,
 } from "@material-ui/core";
+import { connect } from "react-redux";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -23,16 +25,13 @@ const ResponesPerson = ({ user }) => {
         <>
             <ListItem alignItems="space-between">
                 <ListItemAvatar>
-                    <Avatar
-                        alt="Remy Sharp"
-                        src="/../../../../../../images/profile_pic.jpg"
-                    >
+                    <Avatar alt="Remy Sharp">
                         {" "}
                         <PersonIcon />
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                    primary={user.email}
+                    primary={`${user.email} `}
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -41,9 +40,12 @@ const ResponesPerson = ({ user }) => {
                                 className={classes.inline}
                                 color="textPrimary"
                             >
-                                {user.describeUser
-                                    ? `${user.firstName} ${user.lastName} - ${user.describeUser}`
-                                    : `${user.firstName} ${user.lastName} `}
+                                {" "}
+                                {`${user.firstName} ${user.lastName}`}
+                                <div>
+                                    <StarBorderIcon color="primary" />
+                                    {user.profileRating}
+                                </div>
                             </Typography>
                         </React.Fragment>
                     }

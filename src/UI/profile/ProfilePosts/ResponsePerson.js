@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
+import actions from "../../../ducks/users/usersActions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 const useStyles = makeStyles((theme) => ({
     inline: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ResponesPerson = ({ user }) => {
+const ResponesPerson = ({ user, deletePost, postId, handleClose }) => {
     const classes = useStyles();
     return (
         <>
@@ -51,7 +52,14 @@ const ResponesPerson = ({ user }) => {
                     }
                 />
 
-                <IconButton color="primary">
+                <IconButton
+                    color="primary"
+                    onClick={() => {
+                        alert("Przydzielono zadanie");
+                        deletePost(postId);
+                        handleClose(false);
+                    }}
+                >
                     {" "}
                     <CheckCircleIcon />
                 </IconButton>
@@ -61,4 +69,6 @@ const ResponesPerson = ({ user }) => {
     );
 };
 
-export default ResponesPerson;
+export default connect(null, { deletePost: actions.deletePost })(
+    ResponesPerson
+);

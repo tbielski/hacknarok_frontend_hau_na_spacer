@@ -45,13 +45,17 @@ const Dog = ({ dog, photo }) => {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {dog.name}
+                            {dog.dogName}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
             {openPost ? (
-                <DogDialog dog={dog} photo={photo} handleClose={() => setOpenPost(false)} />
+                <DogDialog
+                    dog={dog}
+                    photo={photo}
+                    handleClose={() => setOpenPost(false)}
+                />
             ) : null}
         </Grid>
     );

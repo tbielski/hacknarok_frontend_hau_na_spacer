@@ -28,7 +28,9 @@ function PostDialog({ post, dog, handleClose }) {
                             }}
                         >
                             <img
-                                src={'https://lchsmontana.org/wp-content/uploads/6145A1FD-2392-4CCD-B23F-78160EA10202_1_105_c-e1614377092307-500x500.jpeg'}
+                                src={
+                                    "https://lchsmontana.org/wp-content/uploads/6145A1FD-2392-4CCD-B23F-78160EA10202_1_105_c-e1614377092307-500x500.jpeg"
+                                }
                                 alt={post.postId}
                                 height={300}
                                 width={300}
@@ -68,7 +70,11 @@ function PostDialog({ post, dog, handleClose }) {
                             <Typography gutterBottom>
                                 <b>Kontakt</b>: {post.contact}
                             </Typography>
-                            <ResponsesList responses={post.responses} />
+                            <ResponsesList
+                                handleClose={handleClose}
+                                responses={post.responses}
+                                postId={post._id}
+                            />
                         </Grid>
                     </Grid>
                 </Grid>

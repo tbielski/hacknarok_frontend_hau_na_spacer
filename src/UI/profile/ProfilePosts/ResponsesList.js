@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         display: "inline",
     },
 }));
-function ResponsesList({ responses }) {
+function ResponsesList({ responses, postId, handleClose }) {
     const classes = useStyles();
     const [sortingDown, setSortingDown] = useState(true);
     const [sortedList, setSortedList] = useState([]);
@@ -46,7 +46,11 @@ function ResponsesList({ responses }) {
                 <Typography>{"ocena"}</Typography>
             </ListItem>
             {sortedList.map((user) => (
-                <ResponePerson user={user} />
+                <ResponePerson
+                    user={user}
+                    postId={postId}
+                    handleClose={handleClose}
+                />
             ))}
         </List>
     );

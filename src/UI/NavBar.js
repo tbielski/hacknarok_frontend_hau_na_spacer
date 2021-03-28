@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { connect } from "react-redux";
 import { Link,Redirect } from "react-router-dom";
+import { Toolbar } from "@material-ui/core";
+import logo from '../images/logo.png';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,6 +69,9 @@ function NavBar({ user }) {
   return (
     <div className={classes.root}>
       <AppBar position="static" >
+        <Toolbar >
+        <img src={logo} alt="logo" className={classes.logo} style={{ maxWidth: 50, paddingRight: 5 }}/>
+        <Typography variant="h5"> HAU! Na spacer </Typography>
         {Object.keys(user).length !== 0 && <Redirect to='/profil' />}
         <Tabs
           value={value}
@@ -93,6 +98,7 @@ function NavBar({ user }) {
             <Tab label="Profil" {...a11yProps(1)} component={Link} to="/profil" />
           )}
         </Tabs>
+        </Toolbar>
       </AppBar>
     </div>
   );

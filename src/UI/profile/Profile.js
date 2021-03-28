@@ -4,6 +4,7 @@ import { Grid, List, makeStyles } from "@material-ui/core";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileDogs from "./ProfileDogs/ProfileDogs";
 import { connect } from "react-redux";
+import ProfilePosts from "./ProfilePosts/ProfilePosts";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
@@ -40,6 +41,7 @@ const Profile = ({ user }) => {
             </Grid>
             <Grid item sm={8} container justify="center">
                 <ProfileDogs user={user} />
+                <ProfilePosts user={user} />
             </Grid>
         </Grid>
     );

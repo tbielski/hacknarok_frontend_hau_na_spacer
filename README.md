@@ -4,11 +4,11 @@ Web service made with purpose of making quarantined people lifes easier made in 
 
 ## Contributors
 
-### Frontend (https://github.com/ddereszkiewicz/hacknarok_frontend_hau_na_spacer)
+### Frontend (this repository)
 - Aleksandra Jakubik ( https://github.com/aleksandrajakubik )
 - Dawid Dereszkiewicz ( https://github.com/ddereszkiewicz )
 
-### Backend (this repository)
+### Backend (https://github.com/ddereszkiewicz/hacknarok_server_side_hau_na_spacer)
 - Paweł Janowski ( https://github.com/pjanowski2000 )
 - Tymoteusz Bielski ( https://github.com/tbielski )
 
